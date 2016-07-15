@@ -5,6 +5,7 @@ import com.thoughtworks.ketsu.domain.user.User;
 import com.thoughtworks.ketsu.domain.user.UserId;
 import com.thoughtworks.ketsu.domain.user.UserRepository;
 import com.thoughtworks.ketsu.domain.user.UserRole;
+import com.thoughtworks.ketsu.infrastructure.repositories.ProductRepository;
 
 import javax.ws.rs.Produces;
 import java.util.HashMap;
@@ -63,5 +64,11 @@ public class TestHelper {
 
     public static Product productForTest() {
         return new Product( "Imran", "teacher", 1000.1);
+    }
+
+    public static Product prepareProduct(ProductRepository productRepository) {
+        Product product = productForTest();
+        productRepository.save(product);
+        return product;
     }
 }

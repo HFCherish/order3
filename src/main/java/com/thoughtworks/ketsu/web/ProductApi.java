@@ -3,10 +3,9 @@ package com.thoughtworks.ketsu.web;
 import com.thoughtworks.ketsu.domain.Product;
 import com.thoughtworks.ketsu.infrastructure.repositories.ProductRepository;
 import com.thoughtworks.ketsu.web.jersey.Routes;
+import org.apache.ibatis.annotations.Param;
 
-import javax.ws.rs.Consumes;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
+import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -24,5 +23,12 @@ public class ProductApi {
                 productInfo.get("description").toString(),
                 (double)productInfo.get(("price"))));
         return Response.created(uriInfo.getRequestUri()).build();
+    }
+
+    @GET
+    @Path("{prodId}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Product getOne(@Param("prodId") String prodId) {
+        return new Product();
     }
 }
