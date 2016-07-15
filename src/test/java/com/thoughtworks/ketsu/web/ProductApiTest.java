@@ -13,6 +13,7 @@ import javax.inject.Inject;
 import javax.ws.rs.client.Entity;
 import javax.ws.rs.core.Response;
 
+import java.util.List;
 import java.util.Map;
 
 import static com.thoughtworks.ketsu.support.TestHelper.*;
@@ -78,6 +79,7 @@ public class ProductApiTest extends ApiSupport {
         Response response = target(productsBaseUrl).request().get();
 
         assertThat(response.getStatus(), is(200));
-
+        List products = response.readEntity(List.class);
+        assertThat(products.size(), is(1));
     }
 }
