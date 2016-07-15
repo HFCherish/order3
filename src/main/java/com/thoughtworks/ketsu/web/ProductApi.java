@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @Path("products")
 public class ProductApi {
@@ -33,14 +34,14 @@ public class ProductApi {
     @Path("{prodId}")
     @Produces(MediaType.APPLICATION_JSON)
     public ProductResponseData getOne(@PathParam("prodId") String prodId,
-                                      @Context UriInfo uriInfo,
                                       @Context ProductRepository productRepository) {
-        return new ProductResponseData(productRepository.findById(prodId).map(product -> product).orElseThrow(() -> new WebApplicationException(Response.Status.NOT_FOUND)), uriInfo);
+        return new ProductResponseData(productRepository.findById(prodId).map(product -> product).orElseThrow(() -> new WebApplicationException(Response.Status.NOT_FOUND)));
     }
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<ProductResponseData> getAll(@Context UriInfo uriInfo) {
-        return Arrays.asList(new ProductResponseData(new Product( "Imran", "teacher", 1000.1), uriInfo));
+    public List<ProductResponseData> getAll(@Context UriInfo uriInfo,
+                                            @Context ProductRepository productRepository) {
+        return productRepository.findAll().stream().map(ProductResponseData::new).collect(Collectors.toList());
     }
 }

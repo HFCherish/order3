@@ -10,11 +10,9 @@ import java.util.Map;
 
 public class ProductResponseData implements Record{
     Product product;
-    UriInfo uriInfo;
 
-    public ProductResponseData(Product product, UriInfo uriInfo) {
+    public ProductResponseData(Product product) {
         this.product = product;
-        this.uriInfo = uriInfo;
     }
 
     @Override
