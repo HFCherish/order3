@@ -7,26 +7,14 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.net.URI;
 
 @Path("users")
 public class UsersApi {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response createUser(CreateUserRequestBean info,
-                               @Context UserRepository userRepository,
-                               @Context Routes routes,
-                               @Context EncryptionService encryptionService) {
-        if (userRepository.ofId(new UserId(info.getId())).isPresent()) {
-            throw new WebApplicationException(Response.Status.BAD_REQUEST);
-        }
-        User user = new User(
-                new UserId(info.getId()),
-                info.getName(),
-                info.getEmail(),
-                info.getRole() == null ? UserRole.DEV : info.getRole(),
-                encryptionService.encrypt(info.getPassword()));
-        userRepository.save(user);
-        return Response.created(routes.userUrl(user)).build();
+    public Response createUser() {
+        return Response.created(URI.create("")).build();
     }
 
     @Path("{userId}")

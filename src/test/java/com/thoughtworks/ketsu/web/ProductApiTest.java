@@ -94,6 +94,5 @@ public class ProductApiTest extends ApiSupport {
         assertThat(response.getStatus(), is(200));
         List products = response.readEntity(List.class);
         assertThat(products.size(), is(0));
-
     }
 }

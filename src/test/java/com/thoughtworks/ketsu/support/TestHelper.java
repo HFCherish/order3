@@ -48,10 +48,9 @@ public class TestHelper {
         return user;
     }
 
-    public static Map<String, Object> userJsonForTest(User user) {
+    public static Map<String, Object> userJsonForTest() {
         return new HashMap<String, Object>() {{
-            put("id", user.getUserId().id());
-            put("role", user.getRole());
+            put("name", "Petrina");
         }};
     }
 
