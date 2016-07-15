@@ -17,12 +17,12 @@ import java.util.Map;
 public class ProductApi {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response create(Map<String, Object> productInfo,
+    public Response create(Map productInfo,
                            @Context UriInfo uriInfo,
                            @Context ProductRepository productRepository) {
-//        productRepository.save(new Product(productInfo.get("name").toString(),
-//                productInfo.get("description").toString(),
-//                (double)productInfo.get("price")));
+        productRepository.save(new Product(productInfo.get("name").toString(),
+                productInfo.get("description").toString(),
+                (double)productInfo.get(("price"))));
         return Response.created(uriInfo.getRequestUri()).build();
     }
 }

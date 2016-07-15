@@ -30,9 +30,9 @@ public class ProductRepositoryTest {
         assertThat(fetched.isPresent(), is(true));
         Product fetchedProduct = fetched.get();
         assertThat(fetchedProduct.getId(), is(product.getId()));
-//        assertThat(fetchedProduct.getName(), is(product.getName()));
-//        assertThat(fetchedProduct.getDescription(), is(product.getDescription()));
-//        assertThat(fetchedProduct.getPrice(), is(closeTo(product.getPrice(), 0.01)));
+        assertThat(fetchedProduct.getName(), is(product.getName()));
+        assertThat(fetchedProduct.getDescription(), is(product.getDescription()));
+        assertThat(fetchedProduct.getPrice(), is(closeTo(product.getPrice(), 0.01)));
 
     }
 }

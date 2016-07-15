@@ -57,11 +57,11 @@ public class TestHelper {
         return new HashMap<String, Object>() {{
             put("name", "Imran");
             put("description", "teacher");
-            put("price", "1000");
+            put("price", 1000.1);
         }};
     }
 
     public static Product productForTest() {
-        return new Product( "Imran", "teacher", 1000);
+        return new Product( "Imran", "teacher", 1000.1);
     }
 }

@@ -18,6 +18,7 @@
         <id property="id" column="prodId" />
         <result property="name" column="prodName"/>
         <result property="description" column="prodDescription"/>
+        <result property="price" column="prodPrice"/>
     </resultMap>
 
 </mapper>
