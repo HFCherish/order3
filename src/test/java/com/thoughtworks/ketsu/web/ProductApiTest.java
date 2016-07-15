@@ -15,9 +15,7 @@ import javax.ws.rs.core.Response;
 
 import java.util.Map;
 
-import static com.thoughtworks.ketsu.support.TestHelper.prepareProduct;
-import static com.thoughtworks.ketsu.support.TestHelper.productForTest;
-import static com.thoughtworks.ketsu.support.TestHelper.productJsonForTest;
+import static com.thoughtworks.ketsu.support.TestHelper.*;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
@@ -60,5 +58,16 @@ public class ProductApiTest extends ApiSupport {
         assertThat(prodInfo.get("name").toString(), is(product.getName()));
         assertThat((double)prodInfo.get("price"), is(closeTo(product.getPrice(), 0.01)));
         assertThat(prodInfo.get("description").toString(), is(product.getDescription()));
+    }
+
+    @Test
+    public void should_404_when_get_some_product_given_invalid_id() {
+        Product product = prepareProduct(productRepository);
+        String getOneUrl = productsBaseUrl + "/" + INVALID_ID;
+
+        Response response = target(getOneUrl).request().get();
+
+        assertThat(response.getStatus(), is(404));
+
     }
 }

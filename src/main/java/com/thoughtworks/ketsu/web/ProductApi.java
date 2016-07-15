@@ -29,8 +29,9 @@ public class ProductApi {
     @GET
     @Path("{prodId}")
     @Produces(MediaType.APPLICATION_JSON)
-    public ProductResponseData getOne(@Param("prodId") String prodId,
-                                      @Context UriInfo uriInfo) {
-        return new ProductResponseData(new Product( "Imran", "teacher", 1000.1), uriInfo);
+    public ProductResponseData getOne(@PathParam("prodId") String prodId,
+                                      @Context UriInfo uriInfo,
+                                      @Context ProductRepository productRepository) {
+        return new ProductResponseData(productRepository.findById(prodId).map(product -> product).orElseThrow(() -> new WebApplicationException(Response.Status.NOT_FOUND)), uriInfo);
     }
 }
