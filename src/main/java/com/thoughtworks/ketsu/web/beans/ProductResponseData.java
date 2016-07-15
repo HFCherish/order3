@@ -20,7 +20,7 @@ public class ProductResponseData implements Record{
     @Override
     public Map<String, Object> toRefJson(Routes routes) {
         return new HashMap() {{
-            put("uri", uriInfo.getPath());
+            put("uri", routes.productUrlString(product.getId()));
             put("name", product.getName());
             put("description", product.getDescription());
             put("price", product.getPrice());

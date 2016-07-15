@@ -1,6 +1,5 @@
 package com.thoughtworks.ketsu.web;
 
-import com.thoughtworks.ketsu.MainServer;
 import com.thoughtworks.ketsu.domain.Product;
 import com.thoughtworks.ketsu.infrastructure.repositories.ProductRepository;
 import com.thoughtworks.ketsu.support.ApiSupport;
@@ -12,12 +11,12 @@ import org.junit.runner.RunWith;
 import javax.inject.Inject;
 import javax.ws.rs.client.Entity;
 import javax.ws.rs.core.Response;
-
 import java.util.List;
 import java.util.Map;
 
 import static com.thoughtworks.ketsu.support.TestHelper.*;
 import static org.hamcrest.CoreMatchers.containsString;
+import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 import static org.hamcrest.number.IsCloseTo.closeTo;
@@ -33,7 +32,7 @@ public class ProductApiTest extends ApiSupport {
     @Before
     public void setUp() throws Exception {
         super.setUp();
-        productsBaseUrl = "products";
+        productsBaseUrl = "/products";
     }
 
     @Test
@@ -81,5 +80,8 @@ public class ProductApiTest extends ApiSupport {
         assertThat(response.getStatus(), is(200));
         List products = response.readEntity(List.class);
         assertThat(products.size(), is(1));
+        Map fetchedProd = (Map)products.get(0);
+//        assertThat(fetchedProd.get("uri"), is(productsBaseUrl + "/" + product.getId()));
+        assertThat(fetchedProd.get("uri"), is(notNullValue()));
     }
 }
