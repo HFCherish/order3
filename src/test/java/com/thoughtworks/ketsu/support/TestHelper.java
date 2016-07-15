@@ -1,10 +1,12 @@
 package com.thoughtworks.ketsu.support;
 
+import com.thoughtworks.ketsu.domain.Product;
 import com.thoughtworks.ketsu.domain.user.User;
 import com.thoughtworks.ketsu.domain.user.UserId;
 import com.thoughtworks.ketsu.domain.user.UserRepository;
 import com.thoughtworks.ketsu.domain.user.UserRole;
 
+import javax.ws.rs.Produces;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -57,5 +59,9 @@ public class TestHelper {
             put("description", "teacher");
             put("price", "1000");
         }};
+    }
+
+    public static Product productForTest() {
+        return new Product( "Imran", "teacher", 1000);
     }
 }
