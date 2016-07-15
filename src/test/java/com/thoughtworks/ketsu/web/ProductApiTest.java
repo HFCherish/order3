@@ -21,6 +21,7 @@ import static com.thoughtworks.ketsu.support.TestHelper.productJsonForTest;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
+import static org.hamcrest.number.IsCloseTo.closeTo;
 
 @RunWith(ApiTestRunner.class)
 public class ProductApiTest extends ApiSupport {
@@ -56,5 +57,8 @@ public class ProductApiTest extends ApiSupport {
         assertThat(response.getStatus(), is(200));
         Map prodInfo = response.readEntity(Map.class);
         assertThat(prodInfo.get("uri").toString(), is(getOneUrl));
+        assertThat(prodInfo.get("name").toString(), is(product.getName()));
+        assertThat((double)prodInfo.get("price"), is(closeTo(product.getPrice(), 0.01)));
+        assertThat(prodInfo.get("description").toString(), is(product.getDescription()));
     }
 }
