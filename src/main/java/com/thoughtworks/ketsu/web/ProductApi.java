@@ -41,6 +41,6 @@ public class ProductApi {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<ProductResponseData> getAll(@Context UriInfo uriInfo) {
-        return Arrays.asList(new ProductResponseData(new Product(), uriInfo));
+        return Arrays.asList(new ProductResponseData(new Product( "Imran", "teacher", 1000.1), uriInfo));
     }
 }
