@@ -13,4 +13,11 @@
         <result property="name" column="userName"/>
         <result property="email" column="userEmail"/>
     </resultMap>
+
+    <resultMap id="product" type="com.thoughtworks.ketsu.domain.Product">
+        <id property="id" column="prodId" />
+        <result property="name" column="prodName"/>
+        <result property="description" column="prodDescription"/>
+    </resultMap>
+
 </mapper>

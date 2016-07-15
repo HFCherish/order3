@@ -12,6 +12,7 @@ import java.util.Optional;
 import static com.thoughtworks.ketsu.support.TestHelper.productForTest;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
+import static org.hamcrest.number.IsCloseTo.closeTo;
 
 @RunWith(ApiTestRunner.class)
 public class ProductRepositoryTest {
@@ -27,6 +28,11 @@ public class ProductRepositoryTest {
         Optional<Product> fetched = productRepository.findById(product.getId());
 
         assertThat(fetched.isPresent(), is(true));
+        Product fetchedProduct = fetched.get();
+        assertThat(fetchedProduct.getId(), is(product.getId()));
+//        assertThat(fetchedProduct.getName(), is(product.getName()));
+//        assertThat(fetchedProduct.getDescription(), is(product.getDescription()));
+//        assertThat(fetchedProduct.getPrice(), is(closeTo(product.getPrice(), 0.01)));
 
     }
 }
