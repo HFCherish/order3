@@ -1,5 +1,10 @@
 package com.thoughtworks.ketsu.domain;
 
+import com.thoughtworks.ketsu.infrastructure.records.Record;
+import com.thoughtworks.ketsu.web.jersey.Routes;
+
+import java.util.HashMap;
+import java.util.Map;
 import java.util.UUID;
 
 public class Product {
@@ -34,4 +39,5 @@ public class Product {
     public double getPrice() {
         return price;
     }
+
 }

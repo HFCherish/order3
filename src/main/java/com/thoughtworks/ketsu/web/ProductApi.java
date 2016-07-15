@@ -2,6 +2,7 @@ package com.thoughtworks.ketsu.web;
 
 import com.thoughtworks.ketsu.domain.Product;
 import com.thoughtworks.ketsu.infrastructure.repositories.ProductRepository;
+import com.thoughtworks.ketsu.web.beans.ProductResponseData;
 import com.thoughtworks.ketsu.web.jersey.Routes;
 import org.apache.ibatis.annotations.Param;
 
@@ -28,7 +29,8 @@ public class ProductApi {
     @GET
     @Path("{prodId}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Product getOne(@Param("prodId") String prodId) {
-        return new Product();
+    public ProductResponseData getOne(@Param("prodId") String prodId,
+                                      @Context UriInfo uriInfo) {
+        return new ProductResponseData(new Product( "Imran", "teacher", 1000.1), uriInfo);
     }
 }

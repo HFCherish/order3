@@ -20,4 +20,8 @@ public class Routes {
     public URI relativePath(UriInfo uriInfo) {
         return URI.create(uriInfo.getPath());
     }
+
+    public String productUrlString(String prodId) {
+        return "/products/" + prodId;
+    }
 }

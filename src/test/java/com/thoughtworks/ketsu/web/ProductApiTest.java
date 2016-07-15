@@ -1,5 +1,6 @@
 package com.thoughtworks.ketsu.web;
 
+import com.thoughtworks.ketsu.MainServer;
 import com.thoughtworks.ketsu.domain.Product;
 import com.thoughtworks.ketsu.infrastructure.repositories.ProductRepository;
 import com.thoughtworks.ketsu.support.ApiSupport;
@@ -11,6 +12,8 @@ import org.junit.runner.RunWith;
 import javax.inject.Inject;
 import javax.ws.rs.client.Entity;
 import javax.ws.rs.core.Response;
+
+import java.util.Map;
 
 import static com.thoughtworks.ketsu.support.TestHelper.prepareProduct;
 import static com.thoughtworks.ketsu.support.TestHelper.productForTest;
@@ -30,7 +33,7 @@ public class ProductApiTest extends ApiSupport {
     @Before
     public void setUp() throws Exception {
         super.setUp();
-        productsBaseUrl = "/products";
+        productsBaseUrl = "products";
     }
 
     @Test
@@ -51,6 +54,7 @@ public class ProductApiTest extends ApiSupport {
         Response response = target(getOneUrl).request().get();
 
         assertThat(response.getStatus(), is(200));
-
+        Map prodInfo = response.readEntity(Map.class);
+        assertThat(prodInfo.get("uri").toString(), is(getOneUrl));
     }
 }
