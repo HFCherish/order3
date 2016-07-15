@@ -16,4 +16,8 @@ public class Routes {
     public URI userUrl(User user) {
         return URI.create(String.format("%susers/%s", baseUri, user.getUserId().id()));
     }
+
+    public URI relativePath(UriInfo uriInfo) {
+        return URI.create(uriInfo.getPath());
+    }
 }

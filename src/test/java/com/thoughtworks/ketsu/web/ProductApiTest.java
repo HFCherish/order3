@@ -9,6 +9,7 @@ import javax.ws.rs.client.Entity;
 import javax.ws.rs.core.Response;
 
 import static com.thoughtworks.ketsu.support.TestHelper.productJsonForTest;
+import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 
@@ -22,6 +23,7 @@ public class ProductApiTest extends ApiSupport {
         Response response = target(productsUrl).request().post(Entity.json(productJsonForTest()));
 
         assertThat( response.getStatus(), is(201));
+        assertThat(response.getLocation().toString(), containsString(productsUrl));
 
     }
 }
