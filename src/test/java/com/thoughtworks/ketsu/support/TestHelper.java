@@ -1,5 +1,7 @@
 package com.thoughtworks.ketsu.support;
 
+import com.thoughtworks.ketsu.domain.Order;
+import com.thoughtworks.ketsu.domain.OrderItem;
 import com.thoughtworks.ketsu.domain.Product;
 import com.thoughtworks.ketsu.domain.user.User;
 import com.thoughtworks.ketsu.infrastructure.repositories.ProductRepository;
@@ -59,5 +61,9 @@ public class TestHelper {
                 put("quantity", 2);
             }}));
         }};
+    }
+
+    public static Order orderForTest() {
+        return new Order("Imran", "beijing", "5787", Arrays.asList(new OrderItem()));
     }
 }
