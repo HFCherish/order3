@@ -1,12 +1,13 @@
 package com.thoughtworks.ketsu.web.beans;
 
 import com.thoughtworks.ketsu.domain.Order;
+import com.thoughtworks.ketsu.domain.OrderItem;
 import com.thoughtworks.ketsu.infrastructure.records.Record;
 import com.thoughtworks.ketsu.web.jersey.Routes;
 
 import javax.ws.rs.core.UriInfo;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class OrderResponseBean implements Record{
     private UriInfo orderPath;
@@ -19,12 +20,18 @@ public class OrderResponseBean implements Record{
 
     @Override
     public Map<String, Object> toRefJson(Routes routes) {
+        List orderItemsInfo = new ArrayList();
+        for(OrderItem orderItem: order.getOrderItems()) {
+            orderItemsInfo.add(new OrderItemResponseBean(orderItem).toJson(routes));
+        }
+
         return new HashMap() {{
             put("uri", routes.getRelativeBasePath() + orderPath.getPath());
             put("name", order.getName());
             put("address", order.getAddress());
             put("phone", order.getPhone());
             put("created_at", order.getCreatedAt());
+            put("order_items", orderItemsInfo);
         }};
     }
 

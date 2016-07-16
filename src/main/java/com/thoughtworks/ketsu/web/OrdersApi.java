@@ -1,7 +1,5 @@
 package com.thoughtworks.ketsu.web;
 
-import com.thoughtworks.ketsu.domain.Order;
-import com.thoughtworks.ketsu.domain.OrderItem;
 import com.thoughtworks.ketsu.domain.user.User;
 import com.thoughtworks.ketsu.infrastructure.repositories.OrderRepository;
 import com.thoughtworks.ketsu.infrastructure.util.OrderService;
@@ -12,7 +10,6 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
-import java.util.Arrays;
 
 public class OrdersApi {
     private User user;
