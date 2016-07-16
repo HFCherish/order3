@@ -1,6 +1,5 @@
 package com.thoughtworks.ketsu.web.beans;
 
-import com.thoughtworks.ketsu.MainServer;
 import com.thoughtworks.ketsu.domain.Order;
 import com.thoughtworks.ketsu.infrastructure.records.Record;
 import com.thoughtworks.ketsu.web.jersey.Routes;
@@ -22,6 +21,10 @@ public class OrderResponseBean implements Record{
     public Map<String, Object> toRefJson(Routes routes) {
         return new HashMap() {{
             put("uri", routes.getRelativeBasePath() + orderPath.getPath());
+            put("name", order.getName());
+            put("address", order.getAddress());
+            put("phone", order.getPhone());
+            put("created_at", order.getCreatedAt());
         }};
     }
 

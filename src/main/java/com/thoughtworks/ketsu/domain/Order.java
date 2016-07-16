@@ -1,5 +1,7 @@
 package com.thoughtworks.ketsu.domain;
 
+import org.joda.time.DateTime;
+
 import java.util.List;
 import java.util.UUID;
 
@@ -10,6 +12,7 @@ public class Order {
     private String address;
     private String phone;
     private List<OrderItem> orderItems;
+    private DateTime createdAt;
 
     public Order(String name, String userId, String address, String phone, List<OrderItem> orderItems) {
         this();
@@ -46,5 +49,9 @@ public class Order {
 
     public List<OrderItem> getOrderItems() {
         return orderItems;
+    }
+
+    public DateTime getCreatedAt() {
+        return createdAt;
     }
 }

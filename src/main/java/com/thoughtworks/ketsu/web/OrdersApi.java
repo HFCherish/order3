@@ -32,7 +32,10 @@ public class OrdersApi {
     }
 
     @Path("{orderId}")
-    public OrderApi getOneOrder(@PathParam("orderId") String orderId) {
-        return new OrderApi(new Order("kljl", user.getId(), "beijing", "5787", Arrays.asList(new OrderItem("hkj", 2, 1.1))));
+    public OrderApi getOneOrder(@PathParam("orderId") String orderId,
+                                @Context OrderRepository orderRepository) {
+        return orderRepository.findById(orderId)
+                .map(OrderApi::new)
+                .orElseThrow(() -> new WebApplicationException(Response.Status.NOT_FOUND));
     }
 }
