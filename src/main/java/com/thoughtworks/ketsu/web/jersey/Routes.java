@@ -13,6 +13,10 @@ public class Routes {
         baseUri = uriInfo.getBaseUri().toASCIIString();
     }
 
+    public String getRelativeBasePath() {
+        return "/";
+    }
+
     public URI userUrl(User user) {
         return URI.create(String.format("%susers/%s", baseUri, user.getId()));
     }

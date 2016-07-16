@@ -16,6 +16,8 @@ import javax.inject.Inject;
 import javax.ws.rs.client.Entity;
 import javax.ws.rs.core.Response;
 
+import java.util.Map;
+
 import static com.thoughtworks.ketsu.support.TestHelper.*;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -75,6 +77,7 @@ public class OrdersApiTest extends ApiSupport {
         Response response = target(getOneUrl).request().get();
 
         assertThat(response.getStatus(), is(200));
-
+        Map orderInfo = response.readEntity(Map.class);
+        assertThat(orderInfo.get("uri"), is(getOneUrl));
     }
 }
