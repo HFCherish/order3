@@ -67,9 +67,9 @@
 	31. should the order's id is the same as the created one (resourc.post, repo.save, mapper, database, record; repo.findAll, mapper) --13
 	23. should the order's name, address, phone are the same as the created one (resourc.post, repo.save, mapper, record; repo.findAll, mapper) --13
 	27. should the order's total price is the sum of items' amounts (mapper, record; mapper-findAll) --2
-	28. should the order has a created date (mapper, record) --2 :: 
+	28. should the order has a created date (mapper, record) --2 :: 9
 	3. --------------------------------------------------
-	4. should the response body contain created\_at info when get all orders successfully -- 2 :: 
+	4. should the response body contain created\_at info when get all orders successfully -- 2 :: 0
 	4. should return empty when no orders in db --10 :: 
 29. create payment
 	30. should return 201 when pay (resource.post) --2 ::
