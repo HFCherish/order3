@@ -94,4 +94,15 @@ public class OrdersApiTest extends ApiSupport {
         assertThat(orderItemInfo.get("quantity"), is(expectedItem.getQuantity()));
         assertThat(orderItemInfo.get("amount"), is(expectedItem.getAmount()));
     }
+
+    @Test
+    public void should_400_when_get_some_order_of_some_user_given_invalid_id() {
+        Order order = prepareOrder(user, product, orderRepository);
+        String getOneUrl = ordersBaseUrl + "/" + INVALID_ID;
+
+        Response response = target(getOneUrl).request().get();
+
+        assertThat(response.getStatus(), is(404));
+
+    }
 }
