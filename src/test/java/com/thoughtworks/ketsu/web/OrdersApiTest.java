@@ -1,6 +1,7 @@
 package com.thoughtworks.ketsu.web;
 
 import com.thoughtworks.ketsu.domain.Order;
+import com.thoughtworks.ketsu.domain.OrderItem;
 import com.thoughtworks.ketsu.domain.Product;
 import com.thoughtworks.ketsu.domain.user.User;
 import com.thoughtworks.ketsu.infrastructure.repositories.OrderRepository;
@@ -86,5 +87,10 @@ public class OrdersApiTest extends ApiSupport {
         assertThat(orderInfo.get("created_at"), is(order.getCreatedAt()));
         List orderItemsInfo = (List) orderInfo.get("order_items");
         assertThat(orderItemsInfo.size(), is(1));
+        Map orderItemInfo = (Map)orderItemsInfo.get(0);
+        OrderItem expectedItem = order.getOrderItems().get(0);
+        assertThat(orderItemInfo.get("product_id"), is(expectedItem.getProductId()));
+        assertThat(orderItemInfo.get("quantity"), is(expectedItem.getQuantity()));
+        assertThat(orderItemInfo.get("amount"), is(expectedItem.getAmount()));
     }
 }
