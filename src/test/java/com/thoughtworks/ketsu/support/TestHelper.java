@@ -64,6 +64,6 @@ public class TestHelper {
     }
 
     public static Order orderForTest(User user, Product product) {
-        return new Order("Imran", user.getId(),"beijing", "5787", Arrays.asList(new OrderItem(product.getId(), 2)));
+        return new Order("Imran", user.getId(),"beijing", "5787", Arrays.asList(new OrderItem(product.getId(), 2, product.getPrice())));
     }
 }
