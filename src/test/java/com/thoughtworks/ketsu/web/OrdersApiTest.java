@@ -1,7 +1,9 @@
 package com.thoughtworks.ketsu.web;
 
+import com.thoughtworks.ketsu.domain.Order;
 import com.thoughtworks.ketsu.domain.Product;
 import com.thoughtworks.ketsu.domain.user.User;
+import com.thoughtworks.ketsu.infrastructure.repositories.OrderRepository;
 import com.thoughtworks.ketsu.infrastructure.repositories.ProductRepository;
 import com.thoughtworks.ketsu.infrastructure.repositories.UserRepository;
 import com.thoughtworks.ketsu.support.ApiSupport;
@@ -26,6 +28,9 @@ public class OrdersApiTest extends ApiSupport {
 
     @Inject
     ProductRepository productRepository;
+
+    @Inject
+    OrderRepository orderRepository;
 
     private String ordersBaseUrl;
     private User user;
@@ -60,5 +65,16 @@ public class OrdersApiTest extends ApiSupport {
         Response response = target(ordersBaseUrl).request().post(Entity.json(orderJsonForTest(INVALID_ID)));
 
         assertThat(response.getStatus(), is(400));
+    }
+
+    @Test
+    public void should_get_some_order_of_some_user_successfuly() {
+        Order order = prepareOrder(user, product, orderRepository);
+        String getOneUrl = ordersBaseUrl + "/" + order.getId();
+
+        Response response = target(getOneUrl).request().get();
+
+        assertThat(response.getStatus(), is(200));
+
     }
 }

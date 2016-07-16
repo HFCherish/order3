@@ -4,6 +4,7 @@ import com.thoughtworks.ketsu.domain.Order;
 import com.thoughtworks.ketsu.domain.OrderItem;
 import com.thoughtworks.ketsu.domain.Product;
 import com.thoughtworks.ketsu.domain.user.User;
+import com.thoughtworks.ketsu.infrastructure.repositories.OrderRepository;
 import com.thoughtworks.ketsu.infrastructure.repositories.ProductRepository;
 import com.thoughtworks.ketsu.infrastructure.repositories.UserRepository;
 
@@ -44,7 +45,7 @@ public class TestHelper {
     }
 
     public static Product productForTest() {
-        return new Product( "Imran", "teacher", 1000.1);
+        return new Product("Imran", "teacher", 1000.1);
     }
 
     public static Product prepareProduct(ProductRepository productRepository) {
@@ -58,7 +59,7 @@ public class TestHelper {
             put("name", ORDER_RECEIVER_NAME);
             put("address", "beijing");
             put("phone", "568790");
-            put("order_items", Arrays.asList(new HashMap(){{
+            put("order_items", Arrays.asList(new HashMap() {{
                 put("product_id", prodId);
                 put("quantity", 2);
             }}));
@@ -75,6 +76,12 @@ public class TestHelper {
     }
 
     public static Order orderForTest(User user, Product product) {
-        return new Order(ORDER_RECEIVER_NAME, user.getId(),"beijing", "5787", Arrays.asList(new OrderItem(product.getId(), 2, product.getPrice())));
+        return new Order(ORDER_RECEIVER_NAME, user.getId(), "beijing", "5787", Arrays.asList(new OrderItem(product.getId(), 2, product.getPrice())));
+    }
+
+    public static Order prepareOrder(User user, Product product, OrderRepository orderRepository) {
+        Order order = orderForTest(user, product);
+        orderRepository.save(order);
+        return order;
     }
 }

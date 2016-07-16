@@ -1,16 +1,18 @@
 package com.thoughtworks.ketsu.web;
 
+import com.thoughtworks.ketsu.domain.Order;
+import com.thoughtworks.ketsu.domain.OrderItem;
 import com.thoughtworks.ketsu.domain.user.User;
 import com.thoughtworks.ketsu.infrastructure.repositories.OrderRepository;
 import com.thoughtworks.ketsu.infrastructure.util.OrderService;
 import com.thoughtworks.ketsu.web.beans.OrderRequestBean;
 
-import javax.ws.rs.Consumes;
-import javax.ws.rs.POST;
+import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
+import java.util.Arrays;
 
 public class OrdersApi {
     private User user;
@@ -27,5 +29,10 @@ public class OrdersApi {
                                @Context OrderService orderService) {
         orderRepository.save(orderService.createOrder(orderRequestBean, user));
         return Response.created(uriInfo.getRequestUri()).build();
+    }
+
+    @Path("{orderId}")
+    public OrderApi getOneOrder(@PathParam("orderId") String orderId) {
+        return new OrderApi(new Order("kljl", user.getId(), "beijing", "5787", Arrays.asList(new OrderItem("hkj", 2, 1.1))));
     }
 }
