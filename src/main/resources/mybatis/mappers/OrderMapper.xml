@@ -10,6 +10,7 @@
         SELECT
           <include refid="columns.order"/>
         FROM orders O
+        LEFT JOIN orderItems OI on OI.order_id = O.id
         WHERE O.id = #{id}
     </select>
 

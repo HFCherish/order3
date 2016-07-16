@@ -11,9 +11,12 @@
     <sql id="order">
         O.id as orderId,
         O.user_id as userId,
-        O.name as recevierName,
+        O.name as receiverName,
         O.address as receiverAddr,
-        O.phone as receiverPhone
+        O.phone as receiverPhone,
+        OI.product_id as productId
+--         OI.quantity as quantity,
+--         OI.amount as amount
     </sql>
 
     <sql id="product">

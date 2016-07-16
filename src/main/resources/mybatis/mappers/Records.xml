@@ -15,6 +15,9 @@
         <result property="name" column="receiverName"/>
         <result property="address" column="receiverAddr"/>
         <result property="phone" column="receiverPhone"/>
+        <!--<collection property="orderItems" ofType="com.thoughtworks.ketsu.domain.OrderItem">-->
+            <!--<result property="productId" column="productId" />-->
+        <!--</collection>-->
     </resultMap>
 
 

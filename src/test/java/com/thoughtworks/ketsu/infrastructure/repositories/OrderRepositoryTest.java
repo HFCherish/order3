@@ -49,6 +49,9 @@ public class OrderRepositoryTest {
         assertThat(fetched.isPresent(), is(true));
         Order fetchedOrder = fetched.get();
         assertThat(fetchedOrder.getId(), is(order.getId()));
+        assertThat(fetchedOrder.getName(), is(order.getName()));
+        assertThat(fetchedOrder.getAddress(), is(order.getAddress()));
+        assertThat(fetchedOrder.getPhone(), is(order.getPhone()));
 
     }
 }
