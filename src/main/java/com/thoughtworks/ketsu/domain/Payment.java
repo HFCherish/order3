@@ -11,6 +11,9 @@ public class Payment {
         this.amount = amount;
     }
 
+    private Payment() {
+    }
+
     public String getOrderId() {
         return orderId;
     }

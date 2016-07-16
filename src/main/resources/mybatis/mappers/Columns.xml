@@ -26,4 +26,11 @@
         P.price as prodPrice
     </sql>
 
+    <sql id="payment">
+        P.order_id as orderId,
+        P.type as payType,
+        P.amount as payAmount
+    </sql>
+
+
 </mapper>

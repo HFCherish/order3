@@ -46,6 +46,7 @@ public class PaymentRepositoryTest {
         Optional<Payment> fetched = paymentRepository.findByOrder(order.getId());
 
         assertThat(fetched.isPresent(), is(true));
-
+        Payment fetchedPayment = fetched.get();
+        assertThat(fetchedPayment.getType(), is(payment.getType()));
     }
 }
