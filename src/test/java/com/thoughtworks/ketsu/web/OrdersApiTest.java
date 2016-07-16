@@ -22,6 +22,7 @@ import java.util.Map;
 
 import static com.thoughtworks.ketsu.support.TestHelper.*;
 import static org.hamcrest.CoreMatchers.containsString;
+import static org.hamcrest.CoreMatchers.nullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 
@@ -73,16 +74,22 @@ public class OrdersApiTest extends ApiSupport {
 
     @Test
     public void should_get_some_order_of_some_user_successfuly() {
+        //given
         Order order = prepareOrder(user, product, orderRepository);
         String getOneUrl = ordersBaseUrl + "/" + order.getId();
 
+        //when
         Response response = target(getOneUrl).request().get();
 
+        //then
         assertThat(response.getStatus(), is(200));
+
         Map orderInfo = response.readEntity(Map.class);
         verifyBasicOrderInfo(order, orderInfo);
+
         List orderItemsInfo = (List) orderInfo.get("order_items");
         assertThat(orderItemsInfo.size(), is(1));
+
         Map orderItemInfo = (Map)orderItemsInfo.get(0);
         OrderItem expectedItem = order.getOrderItems().get(0);
         assertThat(orderItemInfo.get("product_id"), is(expectedItem.getProductId()));
@@ -111,15 +118,22 @@ public class OrdersApiTest extends ApiSupport {
 
     @Test
     public void should_200_when_get_all_orders() {
+        //given
         Order order = prepareOrder(user, product, orderRepository);
 
+        //when
         Response response = target(ordersBaseUrl).request().get();
 
+        //then
         assertThat(response.getStatus(), is(200));
+
         List ordersInfo = response.readEntity(List.class);
         assertThat(ordersInfo.size(), is(1));
+
         Map orderInfo = (Map)ordersInfo.get(0);
         verifyBasicOrderInfo(order, orderInfo);
+
+        assertThat(orderInfo.get("order_items"), is(nullValue()));
 
     }
 }

@@ -60,7 +60,7 @@
 	28. should return 200 when review all orders of some user (resource.get) --5 :: 4
 	29. should the response body contain at least one order info. (resource.get, record)  --10 :: 17
 	29. should the response body contain uri info (resource.get) --5 :: 
- 	20. should the response body contain name, address, phone, total\_price info (resource.get, record) --5 :: 
+ 	20. should the response body contain name, address, phone, total\_price info (resource.get, record) --5 :: 5
  	21. should the response body not contain order items info - 15 :: 
 	3. --------------------------------------------------
 	29. should have tried to fetch all orders from database and should get one order when there's one order in database (repo.findAll) --2 :: 

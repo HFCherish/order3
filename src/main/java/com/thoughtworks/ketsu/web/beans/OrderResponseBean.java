@@ -2,36 +2,26 @@ package com.thoughtworks.ketsu.web.beans;
 
 import com.thoughtworks.ketsu.domain.Order;
 import com.thoughtworks.ketsu.domain.OrderItem;
-import com.thoughtworks.ketsu.infrastructure.records.Record;
 import com.thoughtworks.ketsu.web.jersey.Routes;
 
-import javax.ws.rs.core.UriInfo;
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
-public class OrderResponseBean implements Record{
-    private Order order;
-
+public class OrderResponseBean extends OrderBaseResponseBean{
     public OrderResponseBean(Order order) {
-        this.order = order;
+        super(order);
     }
 
     @Override
     public Map<String, Object> toRefJson(Routes routes) {
+        Map res = super.toRefJson(routes);
         List orderItemsInfo = new ArrayList();
         for(OrderItem orderItem: order.getOrderItems()) {
             orderItemsInfo.add(new OrderItemResponseBean(orderItem).toJson(routes));
         }
-
-        return new HashMap() {{
-            put("uri", routes.orderUrlString(order.getUserId()) + "/" + order.getId());
-            put("name", order.getName());
-            put("address", order.getAddress());
-            put("phone", order.getPhone());
-            put("created_at", order.getCreatedAt());
-            put("total_price", order.getTotalPrice());
-            put("order_items", orderItemsInfo);
-        }};
+        res.put("order_items", orderItemsInfo);
+        return res;
     }
 
     @Override

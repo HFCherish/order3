@@ -5,9 +5,7 @@ import com.thoughtworks.ketsu.web.beans.OrderResponseBean;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Produces;
-import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.UriInfo;
 
 public class OrderApi {
     private Order order;
