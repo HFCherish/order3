@@ -59,5 +59,6 @@ public class OrderRepositoryTest {
         OrderItem expectedOrderItem = order.getOrderItems().get(0);
         assertThat(orderItem.getProductId(), is(expectedOrderItem.getProductId()));
         assertThat(orderItem.getQuantity(), is(expectedOrderItem.getQuantity()));
+        assertThat(orderItem.getAmount(), is(expectedOrderItem.getAmount()));
     }
 }
