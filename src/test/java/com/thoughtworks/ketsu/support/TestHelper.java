@@ -84,4 +84,11 @@ public class TestHelper {
         orderRepository.save(order);
         return order;
     }
+
+    public static Map<String, Object> paymentJsonForTest() {
+        return new HashMap<String, Object>() {{
+            put("pay_type", "CASH");
+            put("amount", 2000.1);
+        }};
+    }
 }
