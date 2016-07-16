@@ -31,7 +31,7 @@
 	16. should the user's id is the same as the saved one. (resourc.post, repo.save, mapper, database, record; repo.findById, mapper) --15 :: 9
 	17. should the user's name is the same as the saved one (resourc.post, repo.save, mapper, record; mapper-findById) --5 :: 2
 18. order creation
-	18. should return 201 when creating an order (resource.post) --15 :: 
+	18. should return 201 when creating an order (resource.post) --15 :: 16
 	19. should include the creation uri in header location (resource.post) --10 :: 
 	3. --------------------------------------------------
 	20. should have tried to save the order info into database and should able to get the order after created order (repo.findById) --2 :: 

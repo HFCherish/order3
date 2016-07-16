@@ -4,8 +4,10 @@ import com.thoughtworks.ketsu.domain.user.User;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriInfo;
 import java.net.URI;
 
 public class OrdersApi {
@@ -17,7 +19,7 @@ public class OrdersApi {
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response buildOrder() {
-        return Response.created(URI.create("")).build();
+    public Response buildOrder(@Context UriInfo uriInfo) {
+        return Response.created(uriInfo.getRequestUri()).build();
     }
 }
