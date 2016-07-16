@@ -103,6 +103,16 @@ public class OrdersApiTest extends ApiSupport {
         Response response = target(getOneUrl).request().get();
 
         assertThat(response.getStatus(), is(404));
+    }
+
+    @Test
+    public void should_200_when_get_all_orders() {
+        Order order = prepareOrder(user, product, orderRepository);
+
+        Response response = target(ordersBaseUrl).request().get();
+
+        assertThat(response.getStatus(), is(200));
+
 
     }
 }

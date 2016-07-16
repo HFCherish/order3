@@ -55,7 +55,7 @@
 	30. should that order's total price is the sum of items' amounts (mapper-findById, record) --15 :: 5
 	28. should that order has a created date (mapper, record) --2 :: 1
 	3. --------------------------------------------------
-	4. should return 404 when no order in db --5 :: 
+	4. should return 404 when no order in db --5 :: 5
 27. get all orders of some user
 	28. should return 200 when review all orders of some user (resource.get) --2 :: 
 	29. should the response body contain at least one order info. (resource.get, record)  --15 :: 

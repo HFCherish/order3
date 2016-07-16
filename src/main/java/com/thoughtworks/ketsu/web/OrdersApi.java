@@ -4,12 +4,15 @@ import com.thoughtworks.ketsu.domain.user.User;
 import com.thoughtworks.ketsu.infrastructure.repositories.OrderRepository;
 import com.thoughtworks.ketsu.infrastructure.util.OrderService;
 import com.thoughtworks.ketsu.web.beans.OrderRequestBean;
+import com.thoughtworks.ketsu.web.beans.OrderResponseBean;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
+import java.util.ArrayList;
+import java.util.List;
 
 public class OrdersApi {
     private User user;
@@ -34,5 +37,11 @@ public class OrdersApi {
         return orderRepository.findById(orderId)
                 .map(OrderApi::new)
                 .orElseThrow(() -> new WebApplicationException(Response.Status.NOT_FOUND));
+    }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<OrderResponseBean> getAll() {
+        return new ArrayList<>();
     }
 }
