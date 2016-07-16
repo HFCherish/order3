@@ -42,7 +42,7 @@ public class OrdersApiTest extends ApiSupport {
 
     @Test
     public void should_build_order_successfully() {
-        Response response = target(ordersBaseUrl).request().post(Entity.json(orderJsonForTest(product)));
+        Response response = target(ordersBaseUrl).request().post(Entity.json(orderJsonForTest(product.getId())));
 
         assertThat(response.getStatus(), is(201));
         assertThat(response.getLocation().toString(), containsString(ordersBaseUrl));
@@ -50,9 +50,15 @@ public class OrdersApiTest extends ApiSupport {
 
     @Test
     public void should_400_when_build_order_given_no_items() {
-        Response response = target(ordersBaseUrl).request().post(Entity.json(orderJsonWithoutItemsForTest(product)));
+        Response response = target(ordersBaseUrl).request().post(Entity.json(orderJsonWithoutItemsForTest()));
 
         assertThat(response.getStatus(), is(400));
+    }
 
+    @Test
+    public void should_400_when_build_order_given_invalid_item() {
+        Response response = target(ordersBaseUrl).request().post(Entity.json(orderJsonForTest(INVALID_ID)));
+
+        assertThat(response.getStatus(), is(400));
     }
 }

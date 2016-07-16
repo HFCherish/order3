@@ -53,19 +53,19 @@ public class TestHelper {
         return product;
     }
 
-    public static Map<String, Object> orderJsonForTest(Product product) {
+    public static Map<String, Object> orderJsonForTest(String prodId) {
         return new HashMap<String, Object>() {{
             put("name", ORDER_RECEIVER_NAME);
             put("address", "beijing");
             put("phone", "568790");
             put("order_items", Arrays.asList(new HashMap(){{
-                put("product_id", product.getId());
+                put("product_id", prodId);
                 put("quantity", 2);
             }}));
         }};
     }
 
-    public static Map<String, Object> orderJsonWithoutItemsForTest(Product product) {
+    public static Map<String, Object> orderJsonWithoutItemsForTest() {
         return new HashMap<String, Object>() {{
             put("name", ORDER_RECEIVER_NAME);
             put("address", "beijing");
