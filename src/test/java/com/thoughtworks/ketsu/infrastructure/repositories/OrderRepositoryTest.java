@@ -41,7 +41,7 @@ public class OrderRepositoryTest {
 
     @Test
     public void should_save_and_get_an_order() {
-        Order order = orderForTest(user);
+        Order order = orderForTest(user, product);
 
         orderRepository.save(order);
         Optional<Order> fetched = orderRepository.findById(order.getId());
@@ -52,6 +52,6 @@ public class OrderRepositoryTest {
         assertThat(fetchedOrder.getName(), is(order.getName()));
         assertThat(fetchedOrder.getAddress(), is(order.getAddress()));
         assertThat(fetchedOrder.getPhone(), is(order.getPhone()));
-
+        assertThat(fetchedOrder.getOrderItems().size(), is(1));
     }
 }

@@ -44,7 +44,7 @@ public class OrdersApiTest extends ApiSupport {
 
     @Test
     public void should_build_order_successfully() {
-        Response response = target(ordersBaseUrl).request().post(Entity.json(orderJsonForTest()));
+        Response response = target(ordersBaseUrl).request().post(Entity.json(orderJsonForTest(product)));
 
         assertThat(response.getStatus(), is(201));
         assertThat(response.getLocation().toString(), containsString(ordersBaseUrl));

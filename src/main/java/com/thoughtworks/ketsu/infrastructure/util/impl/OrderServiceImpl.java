@@ -25,6 +25,6 @@ public class OrderServiceImpl implements OrderService {
     }
 
     private OrderItem createOrderItem(OrderItemRequestBean orderItemRequestBean) {
-        return new OrderItem();
+        return new OrderItem(orderItemRequestBean.getProductId(), orderItemRequestBean.getQuantity());
     }
 }

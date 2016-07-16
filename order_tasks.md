@@ -36,8 +36,8 @@
 	3. --------------------------------------------------
 	20. should have tried to save the order info into database and should able to get the order after created order (repo.findById) --15 :: 16
 	22. should the order's id is the same as the created one (resourc.post, repo.save, mapper, database, record; repo.findById, mapper) --13 :: 35
-	23. should the order's name, address, phone are the same as the created one (resourc.post, repo.save, mapper, record; mapper-findById) --13 :: 5 
-	24. should the order contains at least one order item (repo.findById, record)  --50 :: 
+	23. should the order's name, address, phone are the same as the created one (resourc.post, repo.save, mapper, record; mapper-findById) --5 ::  19
+	24. should the order contains at least one order item (repo.findById, record)  --15 :: 
 	25. should the order item's product id is the same as what we bought. (resourc.post, repo.save, mapper, database, record; mapper-findById) --13 :: 
 	26. should the order item's quantity is the same as what we bought, and the item's amount is product.price. (resourc.post, repo.save, mapper, record; mapper-findById) --13 :: 
 	3. --------------------------------------------------

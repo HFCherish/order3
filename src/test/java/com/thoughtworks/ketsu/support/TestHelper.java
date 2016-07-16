@@ -51,19 +51,19 @@ public class TestHelper {
         return product;
     }
 
-    public static Map<String, Object> orderJsonForTest() {
+    public static Map<String, Object> orderJsonForTest(Product product) {
         return new HashMap<String, Object>() {{
             put("name", "Imran");
             put("address", "beijing");
             put("phone", "568790");
             put("order_items", Arrays.asList(new HashMap(){{
-                put("product_id", 1);
+                put("product_id", product.getId());
                 put("quantity", 2);
             }}));
         }};
     }
 
-    public static Order orderForTest(User user) {
-        return new Order("Imran", user.getId(),"beijing", "5787", Arrays.asList(new OrderItem()));
+    public static Order orderForTest(User user, Product product) {
+        return new Order("Imran", user.getId(),"beijing", "5787", Arrays.asList(new OrderItem(product.getId(), 2)));
     }
 }
