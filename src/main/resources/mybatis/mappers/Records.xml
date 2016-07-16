@@ -9,6 +9,15 @@
         <result property="name" column="userName"/>
     </resultMap>
 
+    <resultMap id="order" type="com.thoughtworks.ketsu.domain.Order">
+        <id property="id" column="orderId" />
+        <result property="userId" column="userId" />
+        <result property="name" column="receiverName"/>
+        <result property="address" column="receiverAddr"/>
+        <result property="phone" column="receiverPhone"/>
+    </resultMap>
+
+
     <resultMap id="product" type="com.thoughtworks.ketsu.domain.Product">
         <id property="id" column="prodId" />
         <result property="name" column="prodName"/>

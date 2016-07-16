@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.thoughtworks.ketsu.infrastructure.mybatis.mappers.OrderMapper">
+    <insert id="save">
+        INSERT INTO orders (id, user_id, name, address, phone)
+        VALUES (#{order.id}, #{order.userId}, #{order.name}, #{order.address}, #{order.phone})
+    </insert>
+
+    <select id="findById" resultMap="records.order">
+        SELECT
+          <include refid="columns.order"/>
+        FROM orders O
+        WHERE O.id = #{id}
+    </select>
+
+    <!--<select id="findAll" resultMap="records.product">-->
+        <!--SELECT-->
+        <!--<include refid="columns.product"/>-->
+        <!--FROM products P-->
+    <!--</select>-->
+
+</mapper>

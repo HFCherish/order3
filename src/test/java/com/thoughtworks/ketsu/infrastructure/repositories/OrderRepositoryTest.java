@@ -41,12 +41,14 @@ public class OrderRepositoryTest {
 
     @Test
     public void should_save_and_get_an_order() {
-        Order order = orderForTest();
+        Order order = orderForTest(user);
 
         orderRepository.save(order);
         Optional<Order> fetched = orderRepository.findById(order.getId());
 
         assertThat(fetched.isPresent(), is(true));
+        Order fetchedOrder = fetched.get();
+        assertThat(fetchedOrder.getId(), is(order.getId()));
 
     }
 }

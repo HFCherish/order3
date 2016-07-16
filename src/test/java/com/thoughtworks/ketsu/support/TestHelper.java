@@ -63,7 +63,7 @@ public class TestHelper {
         }};
     }
 
-    public static Order orderForTest() {
-        return new Order("Imran", "beijing", "5787", Arrays.asList(new OrderItem()));
+    public static Order orderForTest(User user) {
+        return new Order("Imran", user.getId(),"beijing", "5787", Arrays.asList(new OrderItem()));
     }
 }

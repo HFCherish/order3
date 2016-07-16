@@ -1,19 +1,31 @@
 package com.thoughtworks.ketsu.domain;
 
 import java.util.List;
+import java.util.UUID;
 
 public class Order {
     private String id;
+    private String userId;
     private String name;
     private String address;
     private String phone;
     private List<OrderItem> orderItems;
 
-    public Order(String name, String address, String phone, List<OrderItem> orderItems) {
+    public Order(String name, String userId, String address, String phone, List<OrderItem> orderItems) {
+        this();
         this.name = name;
+        this.userId = userId;
         this.address = address;
         this.phone = phone;
         this.orderItems = orderItems;
+    }
+
+    private Order() {
+        this.id = UUID.randomUUID().toString();
+    }
+
+    public String getUserId() {
+        return userId;
     }
 
     public String getId() {
