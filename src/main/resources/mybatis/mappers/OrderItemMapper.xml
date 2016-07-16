@@ -2,8 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.thoughtworks.ketsu.infrastructure.mybatis.mappers.OrderItemMapper">
     <insert id="save">
-        INSERT INTO orderItems (order_id, product_id)
-        VALUES (#{orderId}, #{orderItem.productId})
+        INSERT INTO orderItems (order_id, product_id, quantity)
+        VALUES (#{orderId}, #{orderItem.productId}, #{orderItem.quantity})
     </insert>
 
     <!--<select id="findAll" resultMap="records.product">-->

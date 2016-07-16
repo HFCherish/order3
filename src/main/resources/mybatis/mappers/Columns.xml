@@ -14,8 +14,8 @@
         O.name as receiverName,
         O.address as receiverAddr,
         O.phone as receiverPhone,
-        OI.product_id as productId
---         OI.quantity as quantity,
+        OI.product_id as productId,
+        OI.quantity as quantity
 --         OI.amount as amount
     </sql>
 

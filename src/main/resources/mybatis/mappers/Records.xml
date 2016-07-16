@@ -17,6 +17,7 @@
         <result property="phone" column="receiverPhone"/>
         <collection property="orderItems" ofType="com.thoughtworks.ketsu.domain.OrderItem">
             <result property="productId" column="productId" />
+            <result property="quantity" column="quantity" />
         </collection>
     </resultMap>
 

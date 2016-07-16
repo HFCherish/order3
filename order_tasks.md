@@ -38,8 +38,9 @@
 	22. should the order's id is the same as the created one (resourc.post, repo.save, mapper, database, record; repo.findById, mapper) --13 :: 35
 	23. should the order's name, address, phone are the same as the created one (resourc.post, repo.save, mapper, record; mapper-findById) --5 ::  19
 	24. should the order contains at least one order item (repo.findById, record)  --15 :: 25
-	25. should the order item's product id is the same as what we bought. (resourc.post, repo.save, mapper, database, record; mapper-findById) --15 :: 
-	26. should the order item's quantity is the same as what we bought, and the item's amount is product.price. (resourc.post, repo.save, mapper, record; mapper-findById) --13 :: 
+	25. should the order item's product id is the same as what we bought. (resourc.post, repo.save, mapper, database, record; mapper-findById) --15 :: 3
+	26. should the order item's quantity is the same as what we bought. (resourc.post, repo.save, mapper, record; mapper-findById) --15 :: 
+	27. should the item's amount is product.price --20 :: 
 	3. --------------------------------------------------
 	4. should return 400 when the order contains 0 order item --5 :: 
 	5. should return 400 when the order item doesn't exists --8 :: 
