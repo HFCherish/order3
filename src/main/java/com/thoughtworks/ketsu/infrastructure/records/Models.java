@@ -3,7 +3,9 @@ package com.thoughtworks.ketsu.infrastructure.records;
 import com.google.inject.AbstractModule;
 import com.google.inject.Scopes;
 import com.thoughtworks.ketsu.infrastructure.repositories.Impl.OrderRepositoryImpl;
+import com.thoughtworks.ketsu.infrastructure.repositories.Impl.PaymenRepositoryImpl;
 import com.thoughtworks.ketsu.infrastructure.repositories.OrderRepository;
+import com.thoughtworks.ketsu.infrastructure.repositories.PaymentRepository;
 import com.thoughtworks.ketsu.infrastructure.repositories.UserRepository;
 import com.thoughtworks.ketsu.infrastructure.repositories.Impl.ProductRepositoryImpl;
 import com.thoughtworks.ketsu.infrastructure.repositories.Impl.UserRepositoryImpl;
@@ -60,6 +62,7 @@ public class Models extends AbstractModule {
         bind(UserRepository.class).to(UserRepositoryImpl.class);
         bind(ProductRepository.class).to(ProductRepositoryImpl.class);
         bind(OrderRepository.class).to(OrderRepositoryImpl.class);
+        bind(PaymentRepository.class).to(PaymenRepositoryImpl.class);
         bind(OrderService.class).to(OrderServiceImpl.class);
     }
 

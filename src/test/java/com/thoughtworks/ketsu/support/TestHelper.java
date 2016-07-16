@@ -1,8 +1,6 @@
 package com.thoughtworks.ketsu.support;
 
-import com.thoughtworks.ketsu.domain.Order;
-import com.thoughtworks.ketsu.domain.OrderItem;
-import com.thoughtworks.ketsu.domain.Product;
+import com.thoughtworks.ketsu.domain.*;
 import com.thoughtworks.ketsu.domain.user.User;
 import com.thoughtworks.ketsu.infrastructure.repositories.OrderRepository;
 import com.thoughtworks.ketsu.infrastructure.repositories.ProductRepository;
@@ -90,5 +88,9 @@ public class TestHelper {
             put("pay_type", "CASH");
             put("amount", 2000.1);
         }};
+    }
+
+    public static Payment paymentForTest(String orderId) {
+        return new Payment(orderId, PayType.CASH, 2000.1);
     }
 }
