@@ -1,7 +1,6 @@
 package com.thoughtworks.ketsu.infrastructure.repositories.Impl;
 
 import com.thoughtworks.ketsu.domain.user.User;
-import com.thoughtworks.ketsu.domain.user.UserId;
 import com.thoughtworks.ketsu.infrastructure.mybatis.mappers.UserMapper;
 import com.thoughtworks.ketsu.infrastructure.repositories.UserRepository;
 
