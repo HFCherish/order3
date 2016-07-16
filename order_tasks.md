@@ -61,7 +61,7 @@
 	29. should the response body contain at least one order info. (resource.get, record)  --10 :: 17
 	29. should the response body contain uri info (resource.get) --5 :: 
  	20. should the response body contain name, address, phone, total\_price info (resource.get, record) --5 :: 5
- 	21. should the response body not contain order items info - 15 :: 
+ 	21. should the response body not contain order items info - 15 :: 16
 	3. --------------------------------------------------
 	29. should have tried to fetch all orders from database and should get one order when there's one order in database (repo.findAll) --2 :: 
 	31. should the order's id is the same as the created one (resourc.post, repo.save, mapper, database, record; repo.findAll, mapper) --13
