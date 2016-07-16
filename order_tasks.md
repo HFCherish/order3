@@ -75,8 +75,8 @@
 	30. should return 201 when pay (resource.post) --15 :: 13
 	3. --------------------------------------------------
 	31. should try to save the payment info into database and should able to get that payment after pay (resourc.post, repo.findByOrderId) --20 :: 12  
-	32. should the type of that payment is as expected (resourc.post, repo.save, mapper, database, record; repo.findByOrderId, mapper) --13
-	33. should the amount of that payment is as expected (resourc.post, repo.save, mapper, record; mapper-findByOrderId) --8
+	32. should the type of that payment is as expected (resourc.post, repo.save, mapper, database, record; repo.findByOrderId, mapper) --13 :: 25
+	33. should the amount of that payment is as expected (resourc.post, repo.save, mapper, record; mapper-findByOrderId) --8 :: 1
 34. get payment of some order
 	32. should return 200 when get payment (resourc.get) --10
 	33. should the response body include pay type info -- 15 :: 
