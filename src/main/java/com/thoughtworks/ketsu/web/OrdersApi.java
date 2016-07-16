@@ -13,6 +13,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class OrdersApi {
     private User user;
@@ -41,7 +42,10 @@ public class OrdersApi {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public List<OrderResponseBean> getAll() {
-        return new ArrayList<>();
+    public List<OrderResponseBean> getAllOfUser(@Context OrderRepository orderRepository) {
+        return orderRepository.findAllOfUser(user.getId())
+                .stream()
+                .map(OrderResponseBean::new)
+                .collect(Collectors.toList());
     }
 }

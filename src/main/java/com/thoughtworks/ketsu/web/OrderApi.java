@@ -18,7 +18,7 @@ public class OrderApi {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public OrderResponseBean getOrder(@Context UriInfo uriInfo) {
-        return new OrderResponseBean(order, uriInfo);
+    public OrderResponseBean getOrder() {
+        return new OrderResponseBean(order);
     }
 }

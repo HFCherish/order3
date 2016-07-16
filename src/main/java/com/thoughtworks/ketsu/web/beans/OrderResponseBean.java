@@ -10,12 +10,10 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class OrderResponseBean implements Record{
-    private UriInfo orderPath;
     private Order order;
 
-    public OrderResponseBean(Order order, UriInfo orderPath) {
+    public OrderResponseBean(Order order) {
         this.order = order;
-        this.orderPath = orderPath;
     }
 
     @Override
@@ -26,7 +24,7 @@ public class OrderResponseBean implements Record{
         }
 
         return new HashMap() {{
-            put("uri", routes.getRelativeBasePath() + orderPath.getPath());
+            put("uri", routes.orderUrlString(order.getUserId()) + "/" + order.getId());
             put("name", order.getName());
             put("address", order.getAddress());
             put("phone", order.getPhone());

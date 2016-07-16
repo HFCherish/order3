@@ -112,7 +112,8 @@ public class OrdersApiTest extends ApiSupport {
         Response response = target(ordersBaseUrl).request().get();
 
         assertThat(response.getStatus(), is(200));
-
+        List ordersInfo = response.readEntity(List.class);
+        assertThat(ordersInfo.size(), is(1));
 
     }
 }

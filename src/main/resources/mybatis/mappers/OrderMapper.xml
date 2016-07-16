@@ -14,10 +14,12 @@
         WHERE O.id = #{id}
     </select>
 
-    <!--<select id="findAll" resultMap="records.product">-->
-        <!--SELECT-->
-        <!--<include refid="columns.product"/>-->
-        <!--FROM products P-->
-    <!--</select>-->
+    <select id="findAllOfUser" resultMap="records.order">
+        SELECT
+        <include refid="columns.order"/>
+        FROM orders O
+        LEFT JOIN orderItems OI on OI.order_id = O.id
+        WHERE O.user_id = #{userId}
+    </select>
 
 </mapper>

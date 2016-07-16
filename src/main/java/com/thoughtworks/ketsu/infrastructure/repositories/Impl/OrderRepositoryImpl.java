@@ -7,6 +7,7 @@ import com.thoughtworks.ketsu.infrastructure.mybatis.mappers.OrderMapper;
 import com.thoughtworks.ketsu.infrastructure.repositories.OrderRepository;
 
 import javax.inject.Inject;
+import java.util.List;
 import java.util.Optional;
 
 public class OrderRepositoryImpl implements OrderRepository {
@@ -27,5 +28,10 @@ public class OrderRepositoryImpl implements OrderRepository {
     @Override
     public Optional<Order> findById(String id) {
         return Optional.ofNullable(orderMapper.findById(id));
+    }
+
+    @Override
+    public List<Order> findAllOfUser(String userID) {
+        return orderMapper.findAllOfUser(userID);
     }
 }

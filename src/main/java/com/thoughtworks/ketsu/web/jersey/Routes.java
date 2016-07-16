@@ -28,4 +28,7 @@ public class Routes {
     public String productUrlString(String prodId) {
         return "/products/" + prodId;
     }
+    public String orderUrlString(String userId) {
+        return "/users/" + userId + "/orders";
+    }
 }
