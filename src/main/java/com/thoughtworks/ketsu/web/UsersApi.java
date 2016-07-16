@@ -1,14 +1,13 @@
 package com.thoughtworks.ketsu.web;
 
 import com.thoughtworks.ketsu.domain.user.*;
-import com.thoughtworks.ketsu.web.jersey.Routes;
+import com.thoughtworks.ketsu.infrastructure.repositories.UserRepository;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
-import java.net.URI;
 import java.util.Map;
 
 @Path("users")
@@ -24,8 +23,9 @@ public class UsersApi {
     @Path("{userId}")
     public UserApi getUser(@PathParam("userId") String userId,
                            @Context UserRepository userRepository) {
-        return userRepository.ofId(new UserId(userId))
-                .map(UserApi::new)
-                .orElseThrow(() -> new WebApplicationException(Response.Status.NOT_FOUND));
+//        return userRepository.ofId(new UserId(userId))
+//                .map(UserApi::new)
+//                .orElseThrow(() -> new WebApplicationException(Response.Status.NOT_FOUND));
+        return null;
     }
 }

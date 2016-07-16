@@ -2,12 +2,8 @@ package com.thoughtworks.ketsu.support;
 
 import com.thoughtworks.ketsu.domain.Product;
 import com.thoughtworks.ketsu.domain.user.User;
-import com.thoughtworks.ketsu.domain.user.UserId;
-import com.thoughtworks.ketsu.domain.user.UserRepository;
-import com.thoughtworks.ketsu.domain.user.UserRole;
 import com.thoughtworks.ketsu.infrastructure.repositories.ProductRepository;
 
-import javax.ws.rs.Produces;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -38,10 +34,9 @@ public class TestHelper {
         }};
     }
 
-//    public static User userForTest(String id, String name, UserRole role) {
-//        String password_123 = "$2a$04$DbgJbGA4dkQSzAvXvJcGBOv5kHuMBzrWfne3x3Cx4JQv4IJcxtBIW";
-//        return new User(new UserId(id), name, name + "@tw.com", role, password_123);
-//    }
+    public static User userForTest() {
+        return new User(VALID_USER_NAME);
+    }
 
 //    public static User userFixture(UserRepository userRepository, UserRole role) {
 //        final String id = new Integer(auto_increment_key++).toString();
