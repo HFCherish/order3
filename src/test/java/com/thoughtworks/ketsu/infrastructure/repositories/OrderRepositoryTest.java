@@ -1,6 +1,7 @@
 package com.thoughtworks.ketsu.infrastructure.repositories;
 
 import com.thoughtworks.ketsu.domain.Order;
+import com.thoughtworks.ketsu.domain.OrderItem;
 import com.thoughtworks.ketsu.domain.Product;
 import com.thoughtworks.ketsu.domain.user.User;
 import com.thoughtworks.ketsu.support.ApiTestRunner;
@@ -52,6 +53,9 @@ public class OrderRepositoryTest {
         assertThat(fetchedOrder.getName(), is(order.getName()));
         assertThat(fetchedOrder.getAddress(), is(order.getAddress()));
         assertThat(fetchedOrder.getPhone(), is(order.getPhone()));
+
         assertThat(fetchedOrder.getOrderItems().size(), is(1));
+        OrderItem orderItem = fetchedOrder.getOrderItems().get(0);
+        assertThat(orderItem.getProductId(), is(product.getId()));
     }
 }
