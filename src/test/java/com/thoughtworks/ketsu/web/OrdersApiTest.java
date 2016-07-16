@@ -14,9 +14,7 @@ import javax.inject.Inject;
 import javax.ws.rs.client.Entity;
 import javax.ws.rs.core.Response;
 
-import static com.thoughtworks.ketsu.support.TestHelper.orderJsonForTest;
-import static com.thoughtworks.ketsu.support.TestHelper.prepareProduct;
-import static com.thoughtworks.ketsu.support.TestHelper.prepareUser;
+import static com.thoughtworks.ketsu.support.TestHelper.*;
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
@@ -48,5 +46,13 @@ public class OrdersApiTest extends ApiSupport {
 
         assertThat(response.getStatus(), is(201));
         assertThat(response.getLocation().toString(), containsString(ordersBaseUrl));
+    }
+
+    @Test
+    public void should_400_when_build_order_given_no_items() {
+        Response response = target(ordersBaseUrl).request().post(Entity.json(orderJsonWithoutItemsForTest(product)));
+
+        assertThat(response.getStatus(), is(400));
+
     }
 }

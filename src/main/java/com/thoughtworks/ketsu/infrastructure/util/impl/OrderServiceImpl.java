@@ -21,8 +21,13 @@ public class OrderServiceImpl implements OrderService {
 
     @Override
     public Order createOrder(OrderRequestBean orderRequestBean, User user) {
+        List<OrderItemRequestBean> orderItemsInfo = orderRequestBean.getOrderItems();
+        if(orderItemsInfo==null || orderItemsInfo.size()==0) {
+            throw new IllegalArgumentException("must order at least one prouct.");
+        }
+
         List<OrderItem> orderItems = new ArrayList<>();
-        for(OrderItemRequestBean orderItemRequestBean: orderRequestBean.getOrderItems()) {
+        for(OrderItemRequestBean orderItemRequestBean: orderItemsInfo) {
             orderItems.add(createOrderItem(orderItemRequestBean));
         }
         return new Order(orderRequestBean.getName(),
@@ -35,7 +40,7 @@ public class OrderServiceImpl implements OrderService {
     private OrderItem createOrderItem(OrderItemRequestBean orderItemRequestBean) {
         Product product = productRepository.findById(orderItemRequestBean.getProductId())
                 .map(product1 -> product1)
-                .orElseThrow(() -> new WebApplicationException(Response.Status.NOT_FOUND));
+                .orElseThrow(() -> new IllegalArgumentException("the ordered product doesn't exist."));
         return new OrderItem(orderItemRequestBean.getProductId(), orderItemRequestBean.getQuantity(), product.getPrice());
     }
 }
