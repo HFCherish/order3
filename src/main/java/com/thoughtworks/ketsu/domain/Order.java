@@ -54,4 +54,12 @@ public class Order {
     public DateTime getCreatedAt() {
         return createdAt;
     }
+
+    public double getTotalPrice() {
+        double totalPrice = 0;
+        for(OrderItem orderItem: orderItems) {
+            totalPrice += orderItem.getAmount() * orderItem.getQuantity();
+        }
+        return totalPrice;
+    }
 }

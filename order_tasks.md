@@ -51,8 +51,8 @@
  	21. should the response body contain at least one order_item info (resource.get, record) --15 :: 14
  	22. should the order\_item contain product_id, quantity, amount info (resource.get, record) --10 :: 8
 	3. --------------------------------------------------
-	30. should the amount of the item in that order is the price when creating order (resourc.post, repo.save, mapper, record; mapper-findById) --15 :: 
-	30. should that order's total price is the sum of items' amounts (mapper-findById, record) --10
+	30. should the amount of the item in that order is the price when creating order (resourc.post, repo.save, mapper, record; mapper-findById) --15 :: 2
+	30. should that order's total price is the sum of items' amounts (mapper-findById, record) --15
 	28. should that order has a created date (mapper, record) --2 :: 
 	3. --------------------------------------------------
 	4. should return 404 when no order in db --5 :: 

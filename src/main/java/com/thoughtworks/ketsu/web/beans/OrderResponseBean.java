@@ -31,6 +31,7 @@ public class OrderResponseBean implements Record{
             put("address", order.getAddress());
             put("phone", order.getPhone());
             put("created_at", order.getCreatedAt());
+            put("total_price", order.getTotalPrice());
             put("order_items", orderItemsInfo);
         }};
     }

@@ -53,6 +53,7 @@ public class OrderRepositoryTest {
         assertThat(fetchedOrder.getName(), is(order.getName()));
         assertThat(fetchedOrder.getAddress(), is(order.getAddress()));
         assertThat(fetchedOrder.getPhone(), is(order.getPhone()));
+        assertThat(fetchedOrder.getTotalPrice(), is(order.getTotalPrice()));
 
         assertThat(fetchedOrder.getOrderItems().size(), is(1));
         OrderItem orderItem = fetchedOrder.getOrderItems().get(0);
@@ -60,5 +61,6 @@ public class OrderRepositoryTest {
         assertThat(orderItem.getProductId(), is(expectedOrderItem.getProductId()));
         assertThat(orderItem.getQuantity(), is(expectedOrderItem.getQuantity()));
         assertThat(orderItem.getAmount(), is(expectedOrderItem.getAmount()));
+
     }
 }
