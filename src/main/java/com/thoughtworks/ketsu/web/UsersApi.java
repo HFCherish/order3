@@ -15,15 +15,16 @@ public class UsersApi {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public Response createUser(Map userInfo,
-                               @Context UriInfo uriInfo) {
-        User user = new User(userInfo.get("name").toString());
+                               @Context UriInfo uriInfo,
+                               @Context UserRepository userRepository) {
+        userRepository.save(new User(userInfo.get("name").toString()));
         return Response.created(uriInfo.getRequestUri()).build();
     }
 
     @Path("{userId}")
     public UserApi getUser(@PathParam("userId") String userId,
                            @Context UserRepository userRepository) {
-//        return userRepository.ofId(new UserId(userId))
+//        return userRepository.findById(new UserId(userId))
 //                .map(UserApi::new)
 //                .orElseThrow(() -> new WebApplicationException(Response.Status.NOT_FOUND));
         return null;

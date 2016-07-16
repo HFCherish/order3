@@ -14,13 +14,12 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public void save(com.thoughtworks.ketsu.domain.user.User user) {
-//        mapper.save(user);
-//        return mapper.ofId(user.getId());
+        mapper.save(user);
     }
 
     @Override
     public Optional<User> findById(String id) {
-        return Optional.ofNullable(new User("temp"));
+        return Optional.ofNullable(mapper.findById(id));
     }
 
 }

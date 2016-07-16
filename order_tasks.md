@@ -27,7 +27,7 @@
 	12. should return 400 when the registered name is not composed of letters and numbers, at least one (resource.post) -- 10 :: 12
 	13. should include creation uri in header location (resource.post) --10 :: 5
 	3. --------------------------------------------------
-	14. should have tried to save the user info into database and should able to get a user after registered (repo.findById) --10 :: 
+	14. should have tried to save the user info into database and should able to get a user after registered (repo.findById) --10 :: 11
 	16. should the user's id is the same as the saved one. (resourc.post, repo.save, mapper, database, record; repo.findById, mapper) --15 :: 
 	17. should the user's name is the same as the saved one (resourc.post, repo.save, mapper, record; mapper-findById) --8 :: 
 18. order creation

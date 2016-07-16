@@ -26,6 +26,8 @@ public class UserRepositoryTest {
         Optional<User> fetched = userRepository.findById(user.getId());
 
         assertThat(fetched.isPresent(), is(true));
+        User fetchedUser = fetched.get();
+        assertThat(fetchedUser.getId(), is(user.getId()));
 
     }
 }
