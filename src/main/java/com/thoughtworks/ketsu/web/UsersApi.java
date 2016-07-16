@@ -7,6 +7,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriInfo;
 import java.net.URI;
 import java.util.Map;
 
@@ -14,9 +15,10 @@ import java.util.Map;
 public class UsersApi {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    public Response createUser(Map userInfo) {
+    public Response createUser(Map userInfo,
+                               @Context UriInfo uriInfo) {
         User user = new User(userInfo.get("name").toString());
-        return Response.created(URI.create("")).build();
+        return Response.created(uriInfo.getRequestUri()).build();
     }
 
     @Path("{userId}")
