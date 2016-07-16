@@ -80,12 +80,7 @@ public class OrdersApiTest extends ApiSupport {
 
         assertThat(response.getStatus(), is(200));
         Map orderInfo = response.readEntity(Map.class);
-        assertThat(orderInfo.get("uri"), is(getOneUrl));
-        assertThat(orderInfo.get("name"), is(order.getName()));
-        assertThat(orderInfo.get("address"), is(order.getAddress()));
-        assertThat(orderInfo.get("phone"), is(order.getPhone()));
-        assertThat(orderInfo.get("total_price"), is(order.getTotalPrice()));
-        assertThat(orderInfo.get("created_at"), is(order.getCreatedAt()));
+        verifyBasicOrderInfo(order, orderInfo);
         List orderItemsInfo = (List) orderInfo.get("order_items");
         assertThat(orderItemsInfo.size(), is(1));
         Map orderItemInfo = (Map)orderItemsInfo.get(0);
@@ -93,6 +88,15 @@ public class OrdersApiTest extends ApiSupport {
         assertThat(orderItemInfo.get("product_id"), is(expectedItem.getProductId()));
         assertThat(orderItemInfo.get("quantity"), is(expectedItem.getQuantity()));
         assertThat(orderItemInfo.get("amount"), is(expectedItem.getAmount()));
+    }
+
+    private void verifyBasicOrderInfo(Order order, Map orderInfo) {
+        assertThat(orderInfo.get("uri"), is(ordersBaseUrl+"/"+order.getId()));
+        assertThat(orderInfo.get("name"), is(order.getName()));
+        assertThat(orderInfo.get("address"), is(order.getAddress()));
+        assertThat(orderInfo.get("phone"), is(order.getPhone()));
+        assertThat(orderInfo.get("total_price"), is(order.getTotalPrice()));
+        assertThat(orderInfo.get("created_at"), is(order.getCreatedAt()));
     }
 
     @Test
@@ -114,6 +118,8 @@ public class OrdersApiTest extends ApiSupport {
         assertThat(response.getStatus(), is(200));
         List ordersInfo = response.readEntity(List.class);
         assertThat(ordersInfo.size(), is(1));
+        Map orderInfo = (Map)ordersInfo.get(0);
+        verifyBasicOrderInfo(order, orderInfo);
 
     }
 }
