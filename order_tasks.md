@@ -23,7 +23,7 @@
 	3. --------------------------------------------------
 	4. should return 404 when no products in db --5
 11. user register
-	11. should return 201 when register a new user (resource.post) --2 :: 
+	11. should return 201 when register a new user (resource.post) --2 :: 6
 	12. should return 400 when the registered name is not composed of letters and numbers, at least one (resource.post) -- 5 :: 
 	13. should include creation uri in header location (resource.post) --2 :: 
 	3. --------------------------------------------------
@@ -31,8 +31,8 @@
 	16. should the user's id is the same as the saved one. (resourc.post, repo.save, mapper, database, record; repo.findById, mapper) --15 :: 
 	17. should the user's name is the same as the saved one (resourc.post, repo.save, mapper, record; mapper-findById) --8 :: 
 18. order creation
-	18. should return 201 when creating an order (resource.post) --2 :: 
-	19. should include the creation uri in header location (resource.post) --2 :: 
+	18. should return 201 when creating an order (resource.post) --8 :: 6
+	19. should include the creation uri in header location (resource.post) --10 :: 
 	3. --------------------------------------------------
 	20. should have tried to save the order info into database and should able to get the order after created order (repo.findById) --2 :: 
 	22. should the order's id is the same as the created one (resourc.post, repo.save, mapper, database, record; repo.findById, mapper) --13 :: 

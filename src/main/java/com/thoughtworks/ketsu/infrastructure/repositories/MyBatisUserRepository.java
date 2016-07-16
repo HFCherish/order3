@@ -15,7 +15,7 @@ public class MyBatisUserRepository implements UserRepository {
     @Override
     public com.thoughtworks.ketsu.domain.user.User save(com.thoughtworks.ketsu.domain.user.User user) {
         mapper.save(user);
-        return mapper.ofId(user.getUserId().id());
+        return mapper.ofId(user.getId());
     }
 
     @Override

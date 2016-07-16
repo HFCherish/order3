@@ -3,9 +3,9 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="records">
-    <resultMap id="userId" type="com.thoughtworks.ketsu.domain.user.UserId">
+    <resultMap id="id" type="com.thoughtworks.ketsu.domain.user.UserId">
         <constructor>
-            <idArg column="userId" javaType="string"/>
+            <idArg column="id" javaType="string"/>
         </constructor>
     </resultMap>
 
