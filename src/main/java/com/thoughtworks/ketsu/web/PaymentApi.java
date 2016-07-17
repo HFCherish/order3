@@ -32,9 +32,10 @@ public class PaymentApi {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public PaymentResponseBean getPayment(@Context PaymentRepository paymentRepository) {
-        return paymentRepository.findByOrder(order.getId())
-                .map(PaymentResponseBean::new)
-                .orElseThrow(() -> new WebApplicationException(Response.Status.NOT_FOUND));
+    public PaymentResponseBean getPayment(@Context PaymentRepository paymentRepository,
+                                          @Context UriInfo uriInfo) {
+        return new PaymentResponseBean(paymentRepository.findByOrder(order.getId())
+                .map(payment -> payment)
+                .orElseThrow(() -> new WebApplicationException(Response.Status.NOT_FOUND)), uriInfo);
     }
 }

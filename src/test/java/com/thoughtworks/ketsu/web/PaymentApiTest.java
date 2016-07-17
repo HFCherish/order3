@@ -18,6 +18,7 @@ import javax.ws.rs.core.Response;
 import java.util.Map;
 
 import static com.thoughtworks.ketsu.support.TestHelper.*;
+import static org.hamcrest.CoreMatchers.notNullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.core.Is.is;
 
@@ -37,6 +38,7 @@ public class PaymentApiTest extends ApiSupport {
 
     private Order order;
     private String paymentBaseUrl;
+    private String orderUrl;
 
     @Override
     @Before
@@ -45,7 +47,8 @@ public class PaymentApiTest extends ApiSupport {
         order = prepareOrder(prepareUser(userRepository),
                 prepareProduct(productRepository),
                 orderRepository);
-        paymentBaseUrl = "/users/" + order.getUserId() + "/orders/" + order.getId() + "/payment";
+        orderUrl = "users/" + order.getUserId() + "/orders/" + order.getId();
+        paymentBaseUrl = orderUrl + "/payment";
     }
 
     @Test
@@ -62,7 +65,11 @@ public class PaymentApiTest extends ApiSupport {
 
         assertThat(response.getStatus(), is(200));
         Map paymentInfo = response.readEntity(Map.class);
-        assertThat(paymentInfo.get("pay_type"), is("CASH"));
+        assertThat(paymentInfo.get("pay_type"), is(payment.getType().name()));
+        assertThat(paymentInfo.get("amount"), is(payment.getAmount()));
+        assertThat(paymentInfo.get("order_uri"), is(orderUrl));
+        assertThat(paymentInfo.get("uri"), is(paymentBaseUrl));
+//        assertThat(paymentInfo.get("created_at"), is(notNullValue()));
 
     }
 }
