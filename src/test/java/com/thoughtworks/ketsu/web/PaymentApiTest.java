@@ -69,7 +69,7 @@ public class PaymentApiTest extends ApiSupport {
         assertThat(paymentInfo.get("amount"), is(payment.getAmount()));
         assertThat(paymentInfo.get("order_uri"), is(orderUrl));
         assertThat(paymentInfo.get("uri"), is(paymentBaseUrl));
-//        assertThat(paymentInfo.get("created_at"), is(notNullValue()));
+        assertThat(paymentInfo.get("created_at"), is(notNullValue()));
 
     }
 }

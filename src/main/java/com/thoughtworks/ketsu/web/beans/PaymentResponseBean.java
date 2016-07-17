@@ -25,6 +25,7 @@ public class PaymentResponseBean implements Record {
             put("uri", relativeUrl);
             put("pay_type", payment.getType());
             put("amount", payment.getAmount());
+            put("created_at", payment.getPayAt());
         }};
     }
 

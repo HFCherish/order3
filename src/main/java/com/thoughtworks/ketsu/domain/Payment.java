@@ -1,9 +1,12 @@
 package com.thoughtworks.ketsu.domain;
 
+import org.joda.time.DateTime;
+
 public class Payment {
     private String orderId;
     private PayType type;
     private double amount;
+    private DateTime payAt;
 
     public Payment(String orderId, PayType type, double amount) {
         this.orderId = orderId;
@@ -24,5 +27,9 @@ public class Payment {
 
     public double getAmount() {
         return amount;
+    }
+
+    public DateTime getPayAt() {
+        return payAt;
     }
 }
