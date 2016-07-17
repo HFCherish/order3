@@ -1,14 +1,13 @@
 package com.thoughtworks.ketsu.web;
 
 import com.thoughtworks.ketsu.domain.Order;
-import com.thoughtworks.ketsu.domain.Product;
-import com.thoughtworks.ketsu.domain.user.User;
+import com.thoughtworks.ketsu.domain.Payment;
 import com.thoughtworks.ketsu.infrastructure.repositories.OrderRepository;
+import com.thoughtworks.ketsu.infrastructure.repositories.PaymentRepository;
 import com.thoughtworks.ketsu.infrastructure.repositories.ProductRepository;
 import com.thoughtworks.ketsu.infrastructure.repositories.UserRepository;
 import com.thoughtworks.ketsu.support.ApiSupport;
 import com.thoughtworks.ketsu.support.ApiTestRunner;
-import com.thoughtworks.ketsu.support.TestHelper;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,6 +15,7 @@ import org.junit.runner.RunWith;
 import javax.inject.Inject;
 import javax.ws.rs.client.Entity;
 import javax.ws.rs.core.Response;
+import java.util.Map;
 
 import static com.thoughtworks.ketsu.support.TestHelper.*;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -31,6 +31,9 @@ public class PaymentApiTest extends ApiSupport {
 
     @Inject
     OrderRepository orderRepository;
+
+    @Inject
+    PaymentRepository paymentRepository;
 
     private Order order;
     private String paymentBaseUrl;
@@ -54,9 +57,12 @@ public class PaymentApiTest extends ApiSupport {
 
     @Test
     public void should_get_payment_successfully() {
+        Payment payment = preparePayment(order.getId(), paymentRepository);
         Response response = target(paymentBaseUrl).request().get();
 
         assertThat(response.getStatus(), is(200));
+        Map paymentInfo = response.readEntity(Map.class);
+        assertThat(paymentInfo.get("pay_type"), is("CASH"));
 
     }
 }

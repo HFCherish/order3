@@ -4,11 +4,9 @@ import com.thoughtworks.ketsu.domain.Order;
 import com.thoughtworks.ketsu.domain.PayType;
 import com.thoughtworks.ketsu.domain.Payment;
 import com.thoughtworks.ketsu.infrastructure.repositories.PaymentRepository;
+import com.thoughtworks.ketsu.web.beans.PaymentResponseBean;
 
-import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -34,7 +32,9 @@ public class PaymentApi {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Payment getPayment() {
-        return new Payment(order.getId(), PayType.CREDIT_CARD, 2000.1);
+    public PaymentResponseBean getPayment(@Context PaymentRepository paymentRepository) {
+        return paymentRepository.findByOrder(order.getId())
+                .map(PaymentResponseBean::new)
+                .orElseThrow(() -> new WebApplicationException(Response.Status.NOT_FOUND));
     }
 }

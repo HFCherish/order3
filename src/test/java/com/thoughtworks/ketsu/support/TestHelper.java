@@ -3,6 +3,7 @@ package com.thoughtworks.ketsu.support;
 import com.thoughtworks.ketsu.domain.*;
 import com.thoughtworks.ketsu.domain.user.User;
 import com.thoughtworks.ketsu.infrastructure.repositories.OrderRepository;
+import com.thoughtworks.ketsu.infrastructure.repositories.PaymentRepository;
 import com.thoughtworks.ketsu.infrastructure.repositories.ProductRepository;
 import com.thoughtworks.ketsu.infrastructure.repositories.UserRepository;
 
@@ -92,5 +93,11 @@ public class TestHelper {
 
     public static Payment paymentForTest(String orderId) {
         return new Payment(orderId, PayType.CASH, 2000.1);
+    }
+
+    public static Payment preparePayment(String orderId, PaymentRepository paymentRepository) {
+        Payment payment = paymentForTest(orderId);
+        paymentRepository.save(payment);
+        return payment;
     }
 }
