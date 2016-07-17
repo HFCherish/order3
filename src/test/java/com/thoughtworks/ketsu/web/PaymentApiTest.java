@@ -51,4 +51,12 @@ public class PaymentApiTest extends ApiSupport {
 
         assertThat(response.getStatus(), is(201));
     }
+
+    @Test
+    public void should_get_payment_successfully() {
+        Response response = target(paymentBaseUrl).request().get();
+
+        assertThat(response.getStatus(), is(200));
+
+    }
 }
