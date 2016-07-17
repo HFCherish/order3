@@ -85,7 +85,7 @@
 	33. should try to search that payment in database (repo.findByOrderId) --2 ::0
 	3. --------------------------------------------------
 	34. should the response body include creating date (resoure.get, mapper-findByOrderId, record) --5 :: 4
-	4. should return 404 when no payment in db --5 :: 
+	4. should return 404 when no payment in db --5 :: 2
 
 #databases
 1. product: 
@@ -114,9 +114,7 @@
 	8. pay_type
 	10. pay_at
 	11. pay_amount
-12. payTypes:
-	13. id
-	14. name (CASH, INCREDIT_CARD)
+
 
 	
 
